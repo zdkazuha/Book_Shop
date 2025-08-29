@@ -1,0 +1,44 @@
+﻿@model Book_Shop.Data.Entities.Book
+
+<h1 style="text-align: center;" >Create New Book</h1>
+
+    <form class="row g-3" asp-action="Create" method="post">
+        <div class="col-md-12">
+            <label asp-for="Title" class="form-label">Title</label>
+            <input asp-for="Title" type="text" class="form-control" placeholder="Enter product title">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TrilogiesId" class="form-label">Trilogies</label>
+            <input asp-for="TrilogiesId" type="number" class="form-control" min="0" placeholder="Enter Trilogies Id">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="NumberOfPages" class="form-label">Number Of Pages</label>
+            <input asp-for="NumberOfPages" type="number" class="form-control" min="0" placeholder="Enter number of page">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="AuthorId" class="form-label">Author</label>
+            <input asp-for="AuthorId" type="number" class="form-control" min="0" placeholder="Enter Author Id">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Genre" class="form-label">Genre</label>
+            <input asp-for="Genre" type="text" class="form-control" placeholder="Enter Genre">
+            </div>
+        <div class="col-md-6">
+            <label asp-for="Year" class="form-label">Year</label>
+            <input asp-for="Year" type="number" class="form-control" min="0" placeholder="Enter year of publicated">
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Price" class="form-label">Price</label>
+            <input asp-for="Price" min="0" step="0.01" type="number" class="form-control" placeholder="Enter price">
+        </div>
+        <div class="col-md-12">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+        </div>
+        <div class="col-6">
+            <a asp-action="Index" class="btn btn-dark w-100">Back</a>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-success w-100">Create</button>
+        </div>
+    </form>
