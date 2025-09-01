@@ -1,0 +1,57 @@
+﻿@model Book_Shop.Data.Entities.Book
+
+<h1 style="text-align: center;" >Edit Book</h1>
+
+<form class="row g-3" asp-action="Edit" method="post">
+        <div class="col-md-12">
+            <label asp-for="Title" class="form-label">Title</label>
+            <input asp-for="Title" type="text" class="form-control" placeholder="Enter product title">
+            <span asp-validation-for="Title" class="small text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="TrilogiesId" class="form-label">Trilogies</label>
+            <input asp-for="TrilogiesId" type="number" class="form-control" min="0" placeholder="Enter Trilogies Id">
+            <span asp-validation-for="TrilogiesId" class="small text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="NumberOfPages" class="form-label">Number Of Pages</label>
+            <input asp-for="NumberOfPages" type="number" class="form-control" min="0" placeholder="Enter number of page">
+            <span asp-validation-for="NumberOfPages" class="small text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="AuthorId" class="form-label">Author</label>
+            <input asp-for="AuthorId" type="number" class="form-control" min="0" placeholder="Enter Author Id">
+            <span asp-validation-for="AuthorId" class="small text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Genre" class="form-label">Genre</label>
+            <input asp-for="Genre" type="text" class="form-control" placeholder="Enter Genre">
+            <span asp-validation-for="Genre" class="small text-danger"></span>
+            </div>
+        <div class="col-md-6">
+            <label asp-for="Year" class="form-label">Year</label>
+            <input asp-for="Year" type="number" class="form-control" min="0" placeholder="Enter year of publicated">
+            <span asp-validation-for="Year" class="small text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Price" class="form-label">Price</label>
+            <input asp-for="Price" min="0" step="0.01" type="number" class="form-control" placeholder="Enter price">
+            <span asp-validation-for="Price" class="small text-danger"></span>
+        </div>
+        <div class="col-md-12">
+            <label asp-for="ImageUrl" class="form-label">Image URL</label>
+            <input asp-for="ImageUrl" type="url" class="form-control" placeholder="Enter Image URL">
+            <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+        </div>
+        <div class="col-md-12">
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+            <span asp-validation-for="Description" class="small text-danger"></span>
+        </div>
+        <div class="col-6">
+            <a asp-action="Index" class="btn btn-dark w-100">Back</a>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-success w-100">Edit</button>
+        </div>
+</form>

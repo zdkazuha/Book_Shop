@@ -11,6 +11,7 @@ namespace Book_Shop.Data.Entities
 
         public int Id { get; set; }
 
+        [Required]
         public string NameTrilogie { get; set; }
 
         public ICollection<Book> Books { get; set; }

@@ -3,6 +3,7 @@ using Book_Shop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book_Shop.Migrations
 {
     [DbContext(typeof(BookShopDbContext))]
-    partial class BookShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250901134628_Update-Book_ImgageUrl")]
+    partial class UpdateBook_ImgageUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,7 +131,7 @@ namespace Book_Shop.Migrations
                             AuthorId = 1,
                             Description = "Published by Allen & Unwin",
                             Genre = "Fantasy",
-                            ImageUrl = "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg",
+                            ImageUrl = "https://www.harperlibrarybookclub.com/9780547951942/the-lord-of-the-rings/",
                             NumberOfPages = 1178,
                             Price = 20,
                             Title = "The Lord of the Rings",
@@ -141,7 +144,7 @@ namespace Book_Shop.Migrations
                             AuthorId = 1,
                             Description = "Published by Allen & Unwin",
                             Genre = "Fantasy",
-                            ImageUrl = "https://www.britishbook.ua/upload/resize_cache/iblock/3ae/r816m7e8jmluhoml6zvy2yhloaoa4ya2/340_500_174b5ed2089e1946312e2a80dcd26f146/kniga_the_hobbit.jpg",
+                            ImageUrl = "https://via.placeholder.com/200x300?text=The+Hobbit",
                             NumberOfPages = 310,
                             Price = 15,
                             Title = "The Hobbit",
@@ -154,7 +157,7 @@ namespace Book_Shop.Migrations
                             AuthorId = 1,
                             Description = "Published by Allen & Unwin",
                             Genre = "Fantasy",
-                            ImageUrl = "https://content2.rozetka.com.ua/goods/images/big/196236109.jpg",
+                            ImageUrl = "https://via.placeholder.com/200x300?text=The+Silmarillion",
                             NumberOfPages = 365,
                             Price = 25,
                             Title = "The Silmarillion",
@@ -167,7 +170,7 @@ namespace Book_Shop.Migrations
                             AuthorId = 2,
                             Description = "Published by Bloomsbury",
                             Genre = "Fantasy",
-                            ImageUrl = "https://m.media-amazon.com/images/I/81q77Q39nEL.jpg",
+                            ImageUrl = "https://via.placeholder.com/200x300?text=Harry+Potter+1",
                             NumberOfPages = 223,
                             Price = 18,
                             Title = "Harry Potter and the Philosopher's Stone",
@@ -180,7 +183,7 @@ namespace Book_Shop.Migrations
                             AuthorId = 2,
                             Description = "Published by Bloomsbury",
                             Genre = "Fantasy",
-                            ImageUrl = "https://static.yakaboo.ua/media/catalog/product/9/7/9781408855669.jpg",
+                            ImageUrl = "https://via.placeholder.com/200x300?text=Harry+Potter+2",
                             NumberOfPages = 251,
                             Price = 20,
                             Title = "Harry Potter and the Chamber of Secrets",

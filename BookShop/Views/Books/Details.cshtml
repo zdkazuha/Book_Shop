@@ -1,0 +1,46 @@
+﻿@model Book_Shop.Data.Entities.Book
+
+<div>
+<h1 style="margin: 30px 0px 30px 0px; text-align:center" >Details about @Model.Title</h1>
+<div style="display: flex" >
+
+    <div style="border-radius: 20px">
+        <img src="@(string.IsNullOrEmpty(@Model.ImageUrl)
+            ? "https://placehold.co/100x150?text=Not+Found"
+            : @Model.ImageUrl)" alt="@Model.Title" style="margin-right: 50px; border-radius: 20px" width="300" height="470" />
+    </div>
+
+    <div style="width: 400px; height: 470px; background-color: darkgray; padding: 50px; border-radius: 20px; margin-right: 50px ">
+        <p>Title: @Model.Title</p>
+        <p>Number of pages: @Model.NumberOfPages</p>
+        <p>Genre: @Model.Genre</p>
+        <p>Price: @Model.Price$</p>
+        <p>Year: @Model.Year</p>
+        <p>Author: @Model.Author.FirstName @Model.Author.LastName</p>
+        <p>Name Trilogie: @Model.Trilogies.NameTrilogie</p>
+        <p>Description: @Model.Description</p>
+    </div>
+
+    <div style="width: 300px; height: 470px; background-color: darkgray; padding: 20px; border-radius: 20px; margin-right: 50px ">
+            <p>Author's books</p>
+        <ul>
+            @foreach (var book in Model.Author.Books)
+            {
+                <li>@book.Title</li>
+            }
+        </ul>
+    </div>
+
+    <div style="width: 400px; height: 470px; background-color: darkgray; padding: 20px; border-radius: 20px ">
+            <p>Books from this trilogy</p>
+        <ul>
+            @foreach (var book in Model.Trilogies.Books)
+            {
+                <li>@book.Title</li>
+            }
+        </ul>
+        
+    </div>
+
+</div>
+</div>

@@ -54,8 +54,8 @@ namespace Book_Shop.Data
     });
 
             modelBuilder.Entity<Book>().HasData(new[]
-            {
-                new Book()
+{
+    new Book()
     {
         Id = 1,
         Title = "The Lord of the Rings",
@@ -65,9 +65,9 @@ namespace Book_Shop.Data
         Price = 20,
         Description = "Published by Allen & Unwin",
         AuthorId = 1,
-        TrilogiesId = 1
-    },
-                new Book()
+        TrilogiesId = 1,
+        ImageUrl = "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1566425108i/33.jpg"    },
+    new Book()
     {
         Id = 2,
         Title = "The Hobbit",
@@ -77,9 +77,10 @@ namespace Book_Shop.Data
         Price = 15,
         Description = "Published by Allen & Unwin",
         AuthorId = 1,
-        TrilogiesId = 1
+        TrilogiesId = 1,
+    ImageUrl = "https://www.britishbook.ua/upload/resize_cache/iblock/3ae/r816m7e8jmluhoml6zvy2yhloaoa4ya2/340_500_174b5ed2089e1946312e2a80dcd26f146/kniga_the_hobbit.jpg"
     },
-                new Book()
+    new Book()
     {
         Id = 3,
         Title = "The Silmarillion",
@@ -89,9 +90,9 @@ namespace Book_Shop.Data
         Price = 25,
         Description = "Published by Allen & Unwin",
         AuthorId = 1,
-        TrilogiesId = 1
-    },
-                new Book()
+        TrilogiesId = 1,
+    ImageUrl = "https://content2.rozetka.com.ua/goods/images/big/196236109.jpg"    },
+    new Book()
     {
         Id = 4,
         Title = "Harry Potter and the Philosopher's Stone",
@@ -101,9 +102,10 @@ namespace Book_Shop.Data
         Price = 18,
         Description = "Published by Bloomsbury",
         AuthorId = 2,
-        TrilogiesId = 2
+        TrilogiesId = 2,
+    ImageUrl = "https://m.media-amazon.com/images/I/81q77Q39nEL.jpg"
     },
-                new Book()
+    new Book()
     {
         Id = 5,
         Title = "Harry Potter and the Chamber of Secrets",
@@ -113,10 +115,11 @@ namespace Book_Shop.Data
         Price = 20,
         Description = "Published by Bloomsbury",
         AuthorId = 2,
-        TrilogiesId = 2
-    }
+        TrilogiesId = 2,
+        ImageUrl = "https://static.yakaboo.ua/media/catalog/product/9/7/9781408855669.jpg",
+    } }
+    );
 
-            });
 
             modelBuilder.Entity<Trilogies>().HasData(new []
                         {

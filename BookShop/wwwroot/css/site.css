@@ -20,3 +20,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.scale-image img {
+    transition: transform .3s;
+    border-radius: 10px;
+}
+
+.scale-image img:hover {
+    transform: scale(2.5);
+}
