@@ -13,11 +13,11 @@
     <div style="width: 400px; height: 470px; background-color: darkgray; padding: 50px; border-radius: 20px; margin-right: 50px ">
         <p>Title: @Model.Title</p>
         <p>Number of pages: @Model.NumberOfPages</p>
-        <p>Genre: @Model.Genre</p>
+        <p>Genre: @Model.Genres.GenreName</p>
         <p>Price: @Model.Price$</p>
         <p>Year: @Model.Year</p>
-        <p>Author: @Model.Author.FirstName @Model.Author.LastName</p>
-        <p>Name Trilogie: @Model.Trilogies.NameTrilogie</p>
+        <p>Author: @Model.Author.AuthorName</p>
+        <p>Name Trilogie: @Model.Trilogies.TrilogieName</p>
         <p>Description: @Model.Description</p>
     </div>
 

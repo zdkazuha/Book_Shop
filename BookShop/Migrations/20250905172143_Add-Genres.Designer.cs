@@ -3,6 +3,7 @@ using Book_Shop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book_Shop.Migrations
 {
     [DbContext(typeof(BookShopDbContext))]
-    partial class BookShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250905172143_Add-Genres")]
+    partial class AddGenres
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,10 +32,13 @@ namespace Book_Shop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AuthorName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -42,27 +48,32 @@ namespace Book_Shop.Migrations
                         new
                         {
                             Id = 1,
-                            AuthorName = "J.R.R. Tolkien"
+                            FirstName = "John",
+                            LastName = "Tolkien"
                         },
                         new
                         {
                             Id = 2,
-                            AuthorName = "J.K. Rowling"
+                            FirstName = "Joanne",
+                            LastName = "Rowling"
                         },
                         new
                         {
                             Id = 3,
-                            AuthorName = "George R.R. Martin"
+                            FirstName = "George",
+                            LastName = "Martin"
                         },
                         new
                         {
                             Id = 4,
-                            AuthorName = "C.S. Lewis"
+                            FirstName = "J.R.R.",
+                            LastName = "Martin"
                         },
                         new
                         {
                             Id = 5,
-                            AuthorName = "Suzanne Collins"
+                            FirstName = "J.K.",
+                            LastName = "Rowling"
                         });
                 });
 
@@ -236,7 +247,7 @@ namespace Book_Shop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("TrilogieName")
+                    b.Property<string>("NameTrilogie")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -248,27 +259,27 @@ namespace Book_Shop.Migrations
                         new
                         {
                             Id = 1,
-                            TrilogieName = "The Lord of the Rings"
+                            NameTrilogie = "The Lord of the Rings"
                         },
                         new
                         {
                             Id = 2,
-                            TrilogieName = "Harry Potter"
+                            NameTrilogie = "Harry Potter"
                         },
                         new
                         {
                             Id = 3,
-                            TrilogieName = "A Song of Ice and Fire"
+                            NameTrilogie = "A Song of Ice and Fire"
                         },
                         new
                         {
                             Id = 4,
-                            TrilogieName = "The Chronicles of Narnia"
+                            NameTrilogie = "The Chronicles of Narnia"
                         },
                         new
                         {
                             Id = 5,
-                            TrilogieName = "The Hunger Games"
+                            NameTrilogie = "The Hunger Games"
                         });
                 });
 

@@ -2,6 +2,8 @@
 
 <h1 style="text-align: center;" >Edit Book</h1>
 
+<div asp-validation-summary="All" class="text-danger"></div>
+
 <form class="row g-3" asp-action="Edit" method="post">
         <div class="col-md-12">
             <label asp-for="Title" class="form-label">Title</label>
@@ -10,7 +12,9 @@
         </div>
         <div class="col-md-6">
             <label asp-for="TrilogiesId" class="form-label">Trilogies</label>
-            <input asp-for="TrilogiesId" type="number" class="form-control" min="0" placeholder="Enter Trilogies Id">
+            <select asp-for="TrilogiesId" asp-items="@ViewBag.Trilogies" class="form-select">
+                <option disabled selected>Choose Trilogie...</option>
+            </select>
             <span asp-validation-for="TrilogiesId" class="small text-danger"></span>
         </div>
         <div class="col-md-6">
@@ -20,14 +24,18 @@
         </div>
         <div class="col-md-6">
             <label asp-for="AuthorId" class="form-label">Author</label>
-            <input asp-for="AuthorId" type="number" class="form-control" min="0" placeholder="Enter Author Id">
+            <select asp-for="AuthorId" asp-items="@ViewBag.Authors" class="form-select">
+                <option disabled selected>Choose Author...</option>
+            </select>
             <span asp-validation-for="AuthorId" class="small text-danger"></span>
         </div>
         <div class="col-md-6">
-            <label asp-for="Genre" class="form-label">Genre</label>
-            <input asp-for="Genre" type="text" class="form-control" placeholder="Enter Genre">
-            <span asp-validation-for="Genre" class="small text-danger"></span>
-            </div>
+            <label asp-for="GenreId" class="form-label">Genre</label>
+            <select asp-for="GenreId" asp-items="@ViewBag.Genres" class="form-select">
+                <option disabled selected>Choose Genre...</option>
+            </select>
+            <span asp-validation-for="GenreId" class="small text-danger"></span>
+        </div>
         <div class="col-md-6">
             <label asp-for="Year" class="form-label">Year</label>
             <input asp-for="Year" type="number" class="form-control" min="0" placeholder="Enter year of publicated">
@@ -55,3 +63,7 @@
             <button type="submit" class="btn btn-success w-100">Edit</button>
         </div>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

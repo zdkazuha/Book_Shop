@@ -3,6 +3,7 @@ using Book_Shop.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Book_Shop.Migrations
 {
     [DbContext(typeof(BookShopDbContext))]
-    partial class BookShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250905173026_Update-Author")]
+    partial class UpdateAuthor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -236,7 +239,7 @@ namespace Book_Shop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("TrilogieName")
+                    b.Property<string>("NameTrilogie")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -248,27 +251,27 @@ namespace Book_Shop.Migrations
                         new
                         {
                             Id = 1,
-                            TrilogieName = "The Lord of the Rings"
+                            NameTrilogie = "The Lord of the Rings"
                         },
                         new
                         {
                             Id = 2,
-                            TrilogieName = "Harry Potter"
+                            NameTrilogie = "Harry Potter"
                         },
                         new
                         {
                             Id = 3,
-                            TrilogieName = "A Song of Ice and Fire"
+                            NameTrilogie = "A Song of Ice and Fire"
                         },
                         new
                         {
                             Id = 4,
-                            TrilogieName = "The Chronicles of Narnia"
+                            NameTrilogie = "The Chronicles of Narnia"
                         },
                         new
                         {
                             Id = 5,
-                            TrilogieName = "The Hunger Games"
+                            NameTrilogie = "The Hunger Games"
                         });
                 });
 

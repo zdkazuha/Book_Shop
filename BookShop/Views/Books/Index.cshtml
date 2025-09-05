@@ -33,12 +33,12 @@
                         alt="Book Cover" width="70" height="100"/>
                 </td>
                 <td>@i.Title</td>
-                <td>@i.Genre</td>
+                <td>@i.Genres.GenreName</td>
                 <td>@i.NumberOfPages</td>
                 <td>@i.Year</td>
                 <td>@i.Price</td>
-                <td>@i.Author.FirstName @i.Author.LastName</td>
-                <td>@i.Trilogies.NameTrilogie</td>
+                <td>@i.Author.AuthorName</td>
+                <td>@i.Trilogies.TrilogieName</td>
                 <td>
                     <div class="btn-group">
                         <a class="btn btn-primary" asp-route-id="@i.Id" asp-action="Details">Details</a>
@@ -88,7 +88,7 @@
 
             var id = button.getAttribute('data-bs-id')
             var deleteBtn = modal.querySelector('.modal #deleteBtn')
-            deleteBtn.setAttribute('href', "/products/delete/" + id)
+            deleteBtn.setAttribute('href', "/Books/delete/" + id)
         })
 
     </script>

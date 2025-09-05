@@ -17,9 +17,6 @@ namespace Book_Shop.Data.Entities
         public string Title { get; set; }
 
         [Required]
-        public string Genre { get; set; }
-
-        [Required]
         public int NumberOfPages { get; set; }
 
         [Required]
@@ -32,6 +29,8 @@ namespace Book_Shop.Data.Entities
         public string Description { get; set; }
 
         [Required]
+        public int GenreId { get; set; }
+
         public int AuthorId { get; set; }
 
         public int? TrilogiesId { get; set; }
@@ -39,7 +38,8 @@ namespace Book_Shop.Data.Entities
         // Navigation property
 
         public Trilogies? Trilogies { get; set; }
-        public Author Author { get; set; }
+        public Author? Author { get; set; }
+        public Genre? Genres { get; set; }
     }
 }
 

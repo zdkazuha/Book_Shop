@@ -2,17 +2,17 @@
 
 namespace Book_Shop.Data.Entities
 {
-    public class Author
+    public class Genre
     {
-        public Author()
+        public Genre()
         {
             Books = new List<Book>();
         }
 
         public int Id { get; set; }
 
-        [Required, MinLength(3), MaxLength(100)]
-        public string AuthorName { get; set; }
+        [Required]
+        public string GenreName { get; set; }
 
         // Navigation property
 

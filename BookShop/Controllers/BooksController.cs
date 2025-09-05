@@ -1,6 +1,7 @@
 using Book_Shop.Data;
 using Book_Shop.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace BookShop.Controllers
@@ -20,6 +21,7 @@ namespace BookShop.Controllers
             var model = db.Books
                 .Include(i => i.Trilogies)
                 .Include(i => i.Author)
+                .Include(i => i.Genres)
                 .ToList();
 
             return View(model);
@@ -40,21 +42,24 @@ namespace BookShop.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            SetValueToViewBag();
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Book book)
         {
-            Console.WriteLine("dasd");
-            //if (!ModelState.IsValid)
-            //{
-            //    return View();
-            //}
+
+            if (!ModelState.IsValid)
+            {
+                SetValueToViewBag();
+
+                return View(book);
+            }
 
             db.Books.Add(book);
             db.SaveChanges();
-            Console.WriteLine("dasd");
 
             return RedirectToAction("Index");
         }
@@ -65,16 +70,21 @@ namespace BookShop.Controllers
             var book = db.Books.Find(id);
             if (book == null) return NotFound();
 
+            SetValueToViewBag();
+
             return View(book);
         }
 
         [HttpPost]
         public IActionResult Edit(Book book)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View();
-            //}
+
+            if (!ModelState.IsValid)
+            {
+                SetValueToViewBag();
+
+                return View();
+            }
 
             db.Books.Update(book);
             db.SaveChanges();
@@ -87,9 +97,21 @@ namespace BookShop.Controllers
             var model = db.Books
                 .Include(i => i.Trilogies)
                 .Include(i => i.Author)
+                .Include(i => i.Genres)
                 .FirstOrDefault(i => i.Id == id);
 
             return View(model);
+        }
+
+        private void SetValueToViewBag ()
+        {
+            var Genres = new SelectList(db.Genres.ToList(), "Id", "GenreName");
+            var Trilogies = new SelectList(db.Trilogies.ToList(), "Id", "TrilogieName");
+            var Authors = new SelectList(db.Authors.ToList(), "Id", "AuthorName");
+
+            ViewBag.Genres = Genres;
+            ViewBag.Trilogies = Trilogies;
+            ViewBag.Authors = Authors;
         }
     }
 }
