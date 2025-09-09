@@ -1,0 +1,21 @@
+﻿@model Book
+
+<div class="card" style="width: 18rem; height: 700px;">
+
+    <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Title" style="height: 450px;">
+
+    <div class="card-body" >
+
+        <h5 class="card-title" style="height: 50px">@Model.Title</h5>
+
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text">Genre - @Model.Genres.GenreName</p>
+        <p class="card-text">Year - @Model.Year : Price @Model.Price$</p>
+
+        <div>
+            <button type="button" class="btn btn-primary">Add to card</button>
+            <button type="button" class="btn btn-success">Buy Book</button>
+        </div>
+
+    </div>
+</div>
