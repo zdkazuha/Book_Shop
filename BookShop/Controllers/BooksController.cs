@@ -1,5 +1,8 @@
+using Book_Shop;
 using Book_Shop.Data;
 using Book_Shop.Data.Entities;
+using Book_Shop.Models.Expensions;
+using BookShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +39,8 @@ namespace BookShop.Controllers
             db.Books.Remove(book);
             db.SaveChanges();
 
+            TempData.Set(ToastContains.ToastMessage, new ToastModel("Book deleted successfully"));
+
             return RedirectToAction("Index");
         }
 
@@ -60,6 +65,8 @@ namespace BookShop.Controllers
 
             db.Books.Add(book);
             db.SaveChanges();
+
+            TempData.Set(ToastContains.ToastMessage, new ToastModel("Book created successfully"));
 
             return RedirectToAction("Index");
         }
@@ -88,6 +95,8 @@ namespace BookShop.Controllers
 
             db.Books.Update(book);
             db.SaveChanges();
+
+            TempData.Set(ToastContains.ToastMessage, new ToastModel("Book updated successfully"));
 
             return RedirectToAction("Index");
         }

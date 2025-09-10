@@ -60,7 +60,7 @@
 <partial name="_ConfirmDialogPartial" model=@(new ConfirmDialogViewModel() {
          DialogId = delDialogId,
          Mode = DialogType.danger,
-         Message = "Do you want to delete the book?",
+         Message = $"Do you want to delete the book?",
          Title = "Delete Confirmation" }) />
 
 <partial name="_ConfirmDialogPartial" model=@(new ConfirmDialogViewModel() {
