@@ -112,6 +112,18 @@ namespace BookShop.Controllers
             return View(model);
         }
 
+        public IActionResult Favorites()
+        {
+            var model = db.Books
+                .Include(i => i.Trilogies)
+                .Include(i => i.Author)
+                .Include(i => i.Genres)
+                .ToList();
+
+            return View(model);
+        }
+
+
         private void SetValueToViewBag ()
         {
             var Genres = new SelectList(db.Genres.ToList(), "Id", "GenreName");

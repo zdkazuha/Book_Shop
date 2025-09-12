@@ -27,31 +27,31 @@
     </thead>
     <tbody>
             @foreach (var i in Model)
-        {
-            <tr>
-                <td>@i.Id</td>
-                <td class="scale-image" >
-                    <img src="@(string.IsNullOrEmpty(i.ImageUrl) 
-                        ? "https://placehold.co/100x150?text=Not+Found" 
-                        : i.ImageUrl)" 
-                        alt="Book Cover" width="70" height="100"/>
-                </td>
-                <td>@i.Title</td>
-                <td>@i.Genres.GenreName</td>
-                <td>@i.NumberOfPages</td>
-                <td>@i.Year</td>
-                <td>@i.Price</td>
-                <td>@i.Author.AuthorName</td>
-                <td>@i.Trilogies.TrilogieName</td>
-                <td>
-                    <div class="btn-group">
-                        <a class="btn btn-primary" asp-route-id="@i.Id" asp-action="Details">Details</a>
-                        <a class="btn btn-secondary" data-bs-id="@i.Id" data-bs-toggle="modal" data-bs-target="#@editDialogId">Edit</a>
-                        <a data-bs-id="@i.Id" data-bs-toggle="modal" data-bs-target="#@delDialogId" class="btn btn-danger">Delete</a>
-                    </div>
-                </td>
-            </tr>
-        }
+            {
+                <tr>
+                    <td>@i.Id</td>
+                    <td class="scale-image" >
+                        <img src="@(string.IsNullOrEmpty(i.ImageUrl) 
+                            ? "https://placehold.co/100x150?text=Not+Found" 
+                            : i.ImageUrl)" 
+                            alt="Book Cover" width="70" height="100"/>
+                    </td>
+                    <td>@i.Title</td>
+                    <td>@i.Genres?.GenreName</td>
+                    <td>@i.NumberOfPages</td>
+                    <td>@i.Year</td>
+                    <td>@i.Price$</td>
+                    <td>@i.Author?.AuthorName</td>
+                    <td>@i.Trilogies?.TrilogieName</td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-primary" asp-route-id="@i.Id" asp-action="Details">Details</a>
+                            <a class="btn btn-secondary" data-bs-id="@i.Id" data-bs-toggle="modal" data-bs-target="#@editDialogId">Edit</a>
+                            <a data-bs-id="@i.Id" data-bs-toggle="modal" data-bs-target="#@delDialogId" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
     </tbody>
 </table>
 </div>
@@ -60,7 +60,7 @@
 <partial name="_ConfirmDialogPartial" model=@(new ConfirmDialogViewModel() {
          DialogId = delDialogId,
          Mode = DialogType.danger,
-         Message = $"Do you want to delete the book?",
+         Message = "Do you want to delete the book?",
          Title = "Delete Confirmation" }) />
 
 <partial name="_ConfirmDialogPartial" model=@(new ConfirmDialogViewModel() {

@@ -1,0 +1,27 @@
+﻿@model List<Book>
+@{
+    bool IsEmpty = !Model.Any();
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Your Favorites Books</h1>
+
+    <hr style="margin: 20px 0px 20px 0px" />
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4" style="text-align: center" >
+        @if(!IsEmpty)
+        {
+            @foreach (var i in Model)
+            {
+                <div class="col">
+                    <partial name="_BookCardPartial" model="@i" />
+                </div>
+            }
+        }
+        else
+        {
+            <h3 style="width: 400px; margin-left: 450px "  >Your favorites list is empty!</h3>
+        }
+    </div>
+</div>
