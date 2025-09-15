@@ -1,11 +1,10 @@
-﻿
-
-using Book_Shop.Data.Entities;
+﻿using Book_Shop.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Book_Shop.Data
 {
-    public class BookShopDbContext : DbContext
+    public class BookShopDbContext : IdentityDbContext  
     {
         public BookShopDbContext(DbContextOptions<BookShopDbContext> options) :base(options) { }
 
