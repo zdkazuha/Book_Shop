@@ -24,14 +24,16 @@
                     <span>Author: @book.Author?.AuthorName</span><br />
                     <span>Genre: @book.Genres?.GenreName</span><br />
                 </div>
-                <span class="badge text-bg-success rounded-pill">@book.Price$</span>
+                    <span class="badge text-bg-success rounded-pill">@book.Price$</span>
+                    <span class="badge text-bg-primary rounded-pill" style="margin-left: 5px" >@book.Stock</span>
+                    <a asp-action="Remove" asp-route-id="@book.Id" asp-route-returnUrl="Index" asp-route-returnControllerName="Cart" class="text-danger text-decoration-none" style="margin-left: 10px">
+                        <i class="bi bi-x-square"></i>
+                    </a>
             </li>
         }
     </ol>
     <div class="my-2">
-        <a asp-action="Clear" class="text-danger text-decoration-none">
-            <i class="bi bi-x-square"></i> Clear All
-        </a>
+        <a asp-action="Clear" class="text-danger text-decoration-none">Clear All</a>
     </div>
     }
     else

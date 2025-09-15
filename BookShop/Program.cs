@@ -9,13 +9,13 @@ string connStr = builder.Configuration.GetConnectionString("ConnStr") ?? throw n
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddDbContext<BookShopDbContext>(options =>
     options.UseSqlServer(connStr));
 
 builder.Services.AddScoped<ICartService, CartService>();
-builder.Services.AddScoped<FavoritesService>();
+builder.Services.AddScoped<IFavoritesService, FavoritesService>();
 
 
 builder.Services.AddDistributedMemoryCache();

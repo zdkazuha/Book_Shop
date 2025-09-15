@@ -1,5 +1,5 @@
 ﻿@inject ICartService cartService
-@inject FavoritesService favoritesService
+@inject IFavoritesService favoritesService
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,12 +31,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Favorites" asp-action="Index">
-                                Favorites Books (@favoritesService.GetFavoritesSize(Context))
+                                Favorites Books (@favoritesService.GetFavoritesSize())
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">
-                                Cart (@cartService.GetCartSize(Context))
+                                Cart (@cartService.GetCartSize()) 
                             </a>
                         </li>
                     </ul>

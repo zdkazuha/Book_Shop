@@ -1,58 +1,46 @@
 using Book_Shop.Data;
-using Microsoft.AspNetCore.Mvc;
+using Book_Shop.Data.Entities;
 using Book_Shop.Extensions;
+using Book_Shop.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 namespace BookShop.Controllers
 {
     public class FavoritesController : Controller
     {
-        private readonly BookShopDbContext db;
+        private readonly IFavoritesService favoritesService;
 
-        public FavoritesController(BookShopDbContext db)
+        public FavoritesController(IFavoritesService favoritesService)
         {
-            this.db = db;
+            this.favoritesService = favoritesService;
         }
 
         public ActionResult Index()
         {
-            var existingIds = HttpContext.Session.Get<List<int>>("FavoritesBooksIds") ?? new List<int>();
-
-            var books = db.Books
-                .Include(b => b.Author)
-                .Include(b => b.Genres)
-                .Include(b => b.Trilogies)
-                .Where(b => existingIds.Contains(b.Id))
-                .ToList();
+            var books = favoritesService.GetFavorites();
 
             return View(books);
         }
 
         public ActionResult Add(int id)
         {
-            var existingList = HttpContext.Session.Get<List<int>>("FavoritesBooksIds");
+            favoritesService.Add(id);
+            var book = favoritesService.GetFavorite(id);
 
-            List<int> ids = existingList ?? new List<int>();
-
-            if (!ids.Contains(id))
-                ids.Add(id);
-
-            HttpContext.Session.Set("FavoritesBooksIds", ids);
-
-            return RedirectToAction("Index", controllerName: "Home");
-            //return View(id);
+            return RedirectToAction("Details", controllerName: "Books", book);
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Remove(int Id)
         {
-            var existingList = HttpContext.Session.Get<List<int>>("FavoritesBooksIds");
+            favoritesService.Remove(Id);
 
-            List<int> ids = existingList ?? new List<int>();
+            return RedirectToAction("Details", "Books", new { id = Id });
+        }
 
-            ids.Remove(id);
-
-            HttpContext.Session.Set("FavoritesBooksIds", ids);
-
-            return View();
+        public ActionResult Clear()
+        {
+            favoritesService.Clear();
+            return RedirectToAction("Index");
         }
     }
 }

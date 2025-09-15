@@ -1,8 +1,19 @@
-﻿namespace Book_Shop.Interfaces
+﻿using Book_Shop.Data.Entities;
+
+namespace Book_Shop.Interfaces
 {
     public interface ICartService
     {
-        int GetCartSize(HttpContext httpContext);
+        int GetCartSize();
+
+        void Add(int id);
+
+        void Remove(int id);
+        void Clear();
+
+        List<Book> GetBooks();
+
+        bool IsInCart(int id);
     }
 
 }

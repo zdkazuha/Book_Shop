@@ -25,6 +25,9 @@ namespace Book_Shop.Data.Entities
         [Required]
         public int Price { get; set; }
 
+        [Required, MinLength(0)]
+        public int Stock { get; set; }
+
         [Required, MinLength(10), MaxLength(500)]
         public string Description { get; set; }
 

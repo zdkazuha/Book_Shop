@@ -1,4 +1,5 @@
 ﻿@model Book
+@inject ICartService cartService
 
 <div class="card" style="width: 18rem; height: 700px;">
 
@@ -13,13 +14,22 @@
 
             <p class="card-text">@Model.Description</p>
             <p class="card-text">Genre - @Model.Genres?.GenreName</p>
-            <p class="card-text">Year - @Model.Year : Price @Model.Price$</p>
+            <p class="card-text">Price @Model.Price$ : Stock - @Model.Stock</p>
         </div>
 
         <hr style="width: 288px; margin-left: -17px" /> 
 
         <div style="height: 50px; margin-top: -2px ">
-            <a asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-primary">Add to cart</a>
+            @{
+                @if (@cartService.IsInCart(@Model.Id))
+                {
+                    <a asp-controller="Cart" asp-action="Remove" asp-route-id="@Model.Id" asp-route-returnUrl="Index" asp-route-returnControllerName="Home" class="btn btn-danger">Remove the cart</a>
+                }
+                else
+                {
+                    <a asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-secondary" disabled>Add to cart</a>
+                }
+            }
             <button type="button" class="btn btn-success">Buy Book</button>
         </div>
 

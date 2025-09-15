@@ -123,7 +123,6 @@ namespace BookShop.Controllers
             return View(model);
         }
 
-
         private void SetValueToViewBag ()
         {
             var Genres = new SelectList(db.Genres.ToList(), "Id", "GenreName");
