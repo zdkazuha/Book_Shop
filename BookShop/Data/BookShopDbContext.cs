@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Book_Shop.Data
 {
-    public class BookShopDbContext : IdentityDbContext  
+    public class BookShopDbContext : IdentityDbContext<User>  
     {
         public BookShopDbContext(DbContextOptions<BookShopDbContext> options) :base(options) { }
 

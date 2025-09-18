@@ -3,6 +3,7 @@ using Book_Shop.Data;
 using Book_Shop.Services;
 using Book_Shop.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Book_Shop.Data.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<BookShopDbContext>(options =>
     options.UseSqlServer(connStr));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<BookShopDbContext>();
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<BookShopDbContext>();
 
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IFavoritesService, FavoritesService>();
@@ -47,6 +48,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseSession();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
