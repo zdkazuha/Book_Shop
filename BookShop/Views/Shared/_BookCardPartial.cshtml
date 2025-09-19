@@ -30,7 +30,7 @@
                     <a asp-controller="Cart" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-secondary" disabled>Add to cart</a>
                 }
             }
-            <button type="button" class="btn btn-success">Buy Book</button>
+            <a class="btn btn-primary" asp-controller="Books" asp-route-id="@Model.Id" asp-action="Details">Details</a>
         </div>
 
     </div>

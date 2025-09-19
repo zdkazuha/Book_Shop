@@ -1,0 +1,12 @@
+﻿@model List<Order>
+
+<h1 class="display-4">Orders</h1>
+
+<hr style="margin: 20px 0px 20px 0px" />
+
+<ul>
+    @foreach (var i in Model)
+    {
+        <li class="list-group-item">#@i.Id - @i.TotalPrice made by ... @i.OrderDate.ToString() </li> 
+    }
+</ul>

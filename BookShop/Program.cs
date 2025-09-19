@@ -1,9 +1,10 @@
-using Microsoft.EntityFrameworkCore;
 using Book_Shop.Data;
-using Book_Shop.Services;
-using Book_Shop.Interfaces;
-using Microsoft.AspNetCore.Identity;
 using Book_Shop.Data.Entities;
+using Book_Shop.Extensions;
+using Book_Shop.Interfaces;
+using Book_Shop.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,12 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDbContext<BookShopDbContext>(options =>
     options.UseSqlServer(connStr));
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false).AddEntityFrameworkStores<BookShopDbContext>();
+builder.Services.AddIdentity<User, IdentityRole >(options => 
+    options.SignIn.RequireConfirmedAccount = false)
+    .AddDefaultUI()
+    .AddDefaultTokenProviders()
+    .AddEntityFrameworkStores<BookShopDbContext>();
+
 
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IFavoritesService, FavoritesService>();
@@ -34,6 +40,12 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+
+    scope.ServiceProvider.SeedRolesAsync().Wait();
+    scope.ServiceProvider.SeedAdminAsync().Wait();
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

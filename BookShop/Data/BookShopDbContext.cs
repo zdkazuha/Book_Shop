@@ -13,6 +13,8 @@ namespace Book_Shop.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Trilogies> Trilogies { get; set; }
 
+        public DbSet<Order> Orders { get; set; }   
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
