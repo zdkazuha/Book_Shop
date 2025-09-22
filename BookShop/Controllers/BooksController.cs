@@ -3,6 +3,7 @@ using Book_Shop.Data;
 using Book_Shop.Data.Entities;
 using Book_Shop.Models.Expensions;
 using BookShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace BookShop.Controllers
             this.db = db;
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             var model = db.Books
@@ -30,6 +32,7 @@ namespace BookShop.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var book = db.Books.Find(id);
@@ -45,6 +48,8 @@ namespace BookShop.Controllers
         }
 
         [HttpGet]
+        [Authorize]
+
         public IActionResult Create()
         {
             SetValueToViewBag();
@@ -53,6 +58,7 @@ namespace BookShop.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(Book book)
         {
 
@@ -72,6 +78,7 @@ namespace BookShop.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Edit(int id)
         {
             var book = db.Books.Find(id);
@@ -83,6 +90,7 @@ namespace BookShop.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Book book)
         {
 

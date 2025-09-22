@@ -40,6 +40,8 @@ namespace Book_Shop.Data.Entities
 
         // Navigation property
 
+        public ICollection<OrderDetails>? Orders { get; set; }
+
         public Trilogies? Trilogies { get; set; }
         public Author? Author { get; set; }
         public Genre? Genres { get; set; }

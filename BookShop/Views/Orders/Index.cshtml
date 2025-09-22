@@ -1,12 +1,16 @@
 ﻿@model List<Order>
 
-<h1 class="display-4">Orders</h1>
+<div>
 
-<hr style="margin: 20px 0px 20px 0px" />
+    <h1 class="display-4" style="text-align: center"  >Order List</h1>
 
-<ul>
-    @foreach (var i in Model)
-    {
-        <li class="list-group-item">#@i.Id - @i.TotalPrice made by ... @i.OrderDate.ToString() </li> 
-    }
-</ul>
+    <hr style="margin: 20px 0px 20px 0px" />
+
+    <ul class="list-group list-group">
+        @foreach (var i in Model)
+        {
+            <li class="list-group-item">#@i.Id - @i.TotalPrice made by @i.User?.UserName - @i.OrderDate.ToString() </li> 
+        }
+    </ul>
+
+</div>

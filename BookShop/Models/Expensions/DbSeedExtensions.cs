@@ -30,7 +30,7 @@ namespace Book_Shop.Extensions
             var userManager = app.GetRequiredService<UserManager<User>>();
 
             const string USERNAME = "admin@ukr.net";
-            //const string USERNAME = "Admin@ukr.net";
+            //const string USERNAME = "Admin@gmail.net";
             const string PASSWORD = "Qwer-1234";
             //const string PASSWORD = "AdminPassword";
 
