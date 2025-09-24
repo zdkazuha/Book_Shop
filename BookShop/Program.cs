@@ -4,6 +4,7 @@ using Book_Shop.Extensions;
 using Book_Shop.Interfaces;
 using Book_Shop.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,8 @@ builder.Services.AddIdentity<User, IdentityRole >(options =>
 
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IFavoritesService, FavoritesService>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IViewRender, ViewRender>();
 
 
 builder.Services.AddDistributedMemoryCache();
